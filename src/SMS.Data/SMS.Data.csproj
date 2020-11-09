@@ -53,10 +53,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity Configuration\CityEntityConfiguration.cs" />
+    <Compile Include="Migrations\202011090435328_InitialCommit.cs" />
+    <Compile Include="Migrations\202011090435328_InitialCommit.designer.cs">
+      <DependentUpon>202011090435328_InitialCommit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011090554259_AddCityTableToDatabase.cs" />
+    <Compile Include="Migrations\202011090554259_AddCityTableToDatabase.designer.cs">
+      <DependentUpon>202011090554259_AddCityTableToDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\SMSDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011090435328_InitialCommit.resx">
+      <DependentUpon>202011090435328_InitialCommit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011090554259_AddCityTableToDatabase.resx">
+      <DependentUpon>202011090554259_AddCityTableToDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
