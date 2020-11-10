@@ -70,6 +70,10 @@
     <Compile Include="Migrations\202011100604010_PopulateAspNetRolesTable.designer.cs">
       <DependentUpon>202011100604010_PopulateAspNetRolesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011101050021_PopulateUserAndAddToAdminRole.cs" />
+    <Compile Include="Migrations\202011101050021_PopulateUserAndAddToAdminRole.designer.cs">
+      <DependentUpon>202011101050021_PopulateUserAndAddToAdminRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\City.cs" />
@@ -89,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011100604010_PopulateAspNetRolesTable.resx">
       <DependentUpon>202011100604010_PopulateAspNetRolesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011101050021_PopulateUserAndAddToAdminRole.resx">
+      <DependentUpon>202011101050021_PopulateUserAndAddToAdminRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
