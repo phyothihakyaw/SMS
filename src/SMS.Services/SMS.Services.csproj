@@ -58,6 +58,10 @@
       <Project>{45B2D469-2562-4DDB-8C16-C8C79FC5DFE5}</Project>
       <Name>SMS.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SMS.ViewModels\SMS.ViewModels.csproj">
+      <Project>{32B8FBC1-1C0C-4C56-8E8F-F88C3A4D61FA}</Project>
+      <Name>SMS.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

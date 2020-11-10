@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace SMS.Web
 {
@@ -21,6 +20,15 @@ namespace SMS.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/adminlte").Include(
+                      "~/lib/admin-lte/js/adminlte.js",
+                      "~/lib/font-awesome/js/fontawesome.js"));
+
+            bundles.Add(new StyleBundle("~/lib/admin-lte/css").Include(
+                      "~/Content/bootstrap.css",
+                      "~/lib/font-awesome/css/all.css",
+                      "~/lib/admin-lte/css/adminlte.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

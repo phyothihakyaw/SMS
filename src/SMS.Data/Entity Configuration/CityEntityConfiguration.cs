@@ -10,6 +10,12 @@ namespace SMS.Data.Entity_Configuration
             this.Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(100);
+
+            this.Property(p => p.CreatedUserId)
+                .IsRequired();
+
+            this.Property(p => p.UpdatedUserId)
+                .IsRequired();
         }
     }
 }
