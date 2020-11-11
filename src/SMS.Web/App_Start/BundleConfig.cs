@@ -23,7 +23,8 @@ namespace SMS.Web
 
             bundles.Add(new ScriptBundle("~/bundles/adminlte").Include(
                       "~/lib/admin-lte/js/adminlte.js",
-                      "~/lib/font-awesome/js/fontawesome.js"));
+                      "~/lib/font-awesome/js/fontawesome.js",
+                      "~/lib/datatables.net/jquery.dataTables.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootbox").Include(
                       "~/lib/bootbox.js/bootbox.js"));

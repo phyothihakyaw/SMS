@@ -43,10 +43,9 @@ namespace SMS.Services
                 Id = cityViewModel.Id,
                 Name = cityViewModel.Name
             };
-            city.CreatedUserId = userId;
-            city.CreatedDate = DateTime.Now;
-            city.UpdatedUserId = userId;
-            city.UpdatedDate = DateTime.Now;
+            city.CreatedUserId = city.UpdatedUserId = userId;
+            city.CreatedDate = city.UpdatedDate = DateTime.Now;
+            city.Version = 1;
 
             _context.Cities.Add(city);
             _context.SaveChanges();
@@ -60,6 +59,7 @@ namespace SMS.Services
                 query.Name = viewModel.Name;
                 query.UpdatedUserId = userId;
                 query.UpdatedDate = DateTime.Now;
+                query.Version += 1;
             }
 
             _context.SaveChanges();
@@ -67,13 +67,15 @@ namespace SMS.Services
 
         public string CheckIsExistingCity(int id)
         {
-            return id > 1 ? "Edit City" : "Create New City";
+            return id > 0 ? "Edit City" : "Create New City";
         }
 
         public void Delete(int id)
         {
             var query = _context.Cities.Find(id);
             if (query != null) query.IsDelete = true;
+
+            _context.SaveChanges();
         }
     }
 }

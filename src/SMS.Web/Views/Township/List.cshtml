@@ -1,23 +1,23 @@
-﻿@model IEnumerable<SMS.ViewModels.CityViewModel>
+﻿@model IEnumerable<SMS.ViewModels.TownshipViewModel>
 @{
-    ViewBag.Title = "Cities | SMS";
+    ViewBag.Title = "Townships";
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
 }
 
 @if (!Model.Any())
 {
-    <p class="text-bold">There's no city yet. @Html.ActionLink("Click here", "New", null, new { @class = "text-green" }) to add a new city.</p>
+    <p class="text-bold">There's no township yet. @Html.ActionLink("Click here", "New", null, new { @class = "text-green" }) to add a new township.</p>
 }
 else
 {
     <div class="container p-5">
         <div class="row">
             <button class="btn btn-primary btn-lg">
-                @Html.ActionLink("Add new city", "New", null, new { @class = "text-white" })
+                @Html.ActionLink("Add new township", "New", null, new { @class = "text-white" })
             </button>
         </div>
 
-        <h2 class="text-center">Cities</h2>
+        <h2 class="text-center">Townships</h2>
 
         <div class="row">
             <table class="table table-hover w-50 mx-auto">
@@ -26,28 +26,34 @@ else
                         <th scope="col">
                             @Html.DisplayNameFor(model => model.Name)
                         </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.CityName)
+                        </th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var city in Model)
+                    @foreach (var township in Model)
                     {
-                        <tr>
-                            <td scope="row">
-                                @Html.DisplayFor(c => city.Name)
-                            </td>
-                            <td scope="row">
-                                <a class="btn btn-link" href="/City/Edit/@city.Id">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td scope="row">
-                                <button class="btn btn-link js-delete" data-city-id="@city.Id">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td scope="row">
+                            @Html.DisplayFor(c => township.Name)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(c => township.CityName)
+                        </td>
+                        <td scope="row">
+                            <a class="btn btn-link" href="/Township/Edit/@township.Id">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                        <td scope="row">
+                            <button class="btn btn-link js-delete" data-township-id="@township.Id">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
@@ -58,13 +64,12 @@ else
 @section Scripts {
     <script>
         $(function () {
-            var table = $('table');
 
             $('.js-delete').on("click", function () {
                 var button = $(this);       //to avoid creating many event listeners in table
 
                 bootbox.confirm({
-                    message: "Are you sure you want to delete this city",
+                    message: "Are you sure you want to delete this township",
                     buttons: {
                         confirm: {
                             label: "Yes",
@@ -78,12 +83,12 @@ else
                     callback: function (result) {
                         if (result) {
                             $.ajax({
-                                url: "/city/delete/" + button.attr("data-city-id"),
+                                url: "/township/delete/" + button.attr("data-township-id"),
                                 method: 'DELETE',
                                 success: function () {
                                     button.parents('tr').remove();
 
-                                    toastr.success("City Deleted");
+                                    toastr.success("Township Deleted");
                                 }
                             });
                         }
@@ -93,4 +98,3 @@ else
         });
     </script>
 }
-

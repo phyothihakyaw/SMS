@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using SMS.Services;
 using SMS.ViewModels;
 using System.Web.Mvc;
@@ -14,6 +16,18 @@ namespace SMS.Web.Controllers
         {
             var cities = _cityServices.GetCities();
             return View("List", cities);
+        }
+
+        //GET : City
+        public ActionResult Load()
+        {
+            var cities = _cityServices.GetCities();
+            var jsonSerializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
+            var jsonData = JsonConvert.SerializeObject(cities, jsonSerializerSettings);
+            return Content(jsonData, "application/json");
         }
 
         // GET : City/New
@@ -50,6 +64,7 @@ namespace SMS.Web.Controllers
                     Id = city.Id,
                     Name = city.Name
                 };
+                ViewBag.Title = _cityServices.CheckIsExistingCity(id);
 
                 return View("CityForm", viewModel);
             }
@@ -70,6 +85,15 @@ namespace SMS.Web.Controllers
             }
 
             return View("CityForm", viewModel);
+        }
+
+        // DELETE : City/Delete/{id}
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            _cityServices.Delete(id);
+
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

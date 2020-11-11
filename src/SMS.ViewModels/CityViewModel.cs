@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SMS.ViewModels
 {
@@ -6,7 +7,8 @@ namespace SMS.ViewModels
     {
         public int Id { get; set; }
 
-        [DisplayName("City Name")]
+        [DisplayName("City")]
+        [Required]
         public string Name { get; set; }
     }
 }

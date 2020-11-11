@@ -1,0 +1,40 @@
+﻿@model SMS.ViewModels.TownshipViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2 class="content-header text-center">@(Model.Id > 0 ? "Edit Township" : "Create New Township")</h2>
+
+<div class="container d-flex justify-content-center">
+    @using (Html.BeginForm((Model.Id == 0 ? "Create" : "Edit"), "Township", FormMethod.Post, new { @class = "form mx-auto w-50" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(c => Model.Name)
+            @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.Name, "", new { @class = "text-sm text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => Model.CityId)
+            @Html.DropDownListFor(expression: c => c.CityId, selectList: new SelectList(Model.Cities, "Id", "Name"),optionLabel: "Selecat a city", htmlAttributes: new { @class="form-control" })
+            @Html.ValidationMessageFor(c => c.CityId, "", new { @class = "text-sm text-danger" })
+        </div>
+
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">
+            <div class="p-0">
+                <input type="submit" value="@((Model.Id == 0 ? "Create" : "Edit"))" class="btn btn-primary btn-lg" />
+            </div>
+        </div>
+        @Html.ActionLink("Back to city list", "Index")
+
+    }
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

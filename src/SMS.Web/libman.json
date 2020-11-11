@@ -17,6 +17,10 @@
     {
       "library": "toastr.js@2.1.4",
       "destination": "lib/toastr.js/"
+    },
+    {
+      "library": "datatables.net@1.10.22",
+      "destination": "lib/datatables.net/"
     }
   ]
 }

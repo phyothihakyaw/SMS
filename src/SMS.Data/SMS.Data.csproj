@@ -83,6 +83,10 @@
     <Compile Include="Migrations\202011110439181_AddTownshipsTableToDatabase.designer.cs">
       <DependentUpon>202011110439181_AddTownshipsTableToDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011110601567_Check.cs" />
+    <Compile Include="Migrations\202011110601567_Check.designer.cs">
+      <DependentUpon>202011110601567_Check.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\City.cs" />
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011110439181_AddTownshipsTableToDatabase.resx">
       <DependentUpon>202011110439181_AddTownshipsTableToDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011110601567_Check.resx">
+      <DependentUpon>202011110601567_Check.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
