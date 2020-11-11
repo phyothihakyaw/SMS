@@ -262,8 +262,6 @@
     <Content Include="lib\admin-lte\js\pages\dashboard3.min.js" />
     <Content Include="lib\bootbox.js\bootbox.js" />
     <Content Include="lib\bootbox.js\bootbox.min.js" />
-    <Content Include="lib\datatables.net\jquery.dataTables.js" />
-    <Content Include="lib\datatables.net\jquery.dataTables.min.js" />
     <Content Include="lib\font-awesome\css\all.css" />
     <Content Include="lib\font-awesome\css\all.min.css" />
     <Content Include="lib\font-awesome\css\brands.css" />

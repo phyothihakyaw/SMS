@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace SMS.Services
 {
-    public class CityServices
+    public class CityServices : CommonServices<CityViewModel>
     {
         private readonly SMSDbContext _context = new SMSDbContext();
 
-        public List<CityViewModel> GetCities()
+        public override List<CityViewModel> GetAll()
         {
             return _context
                 .Cities
@@ -23,7 +23,7 @@ namespace SMS.Services
                 .ToList();
         }
 
-        public CityViewModel GetCityById(int id)
+        public override CityViewModel GetById(int id)
         {
             return _context
                 .Cities
@@ -36,7 +36,7 @@ namespace SMS.Services
                 .FirstOrDefault();
         }
 
-        public void Create(CityViewModel cityViewModel, string userId)
+        public override void Create(CityViewModel cityViewModel, string userId)
         {
             var city = new City
             {
@@ -51,7 +51,7 @@ namespace SMS.Services
             _context.SaveChanges();
         }
 
-        public void Update(CityViewModel viewModel, string userId)
+        public override void Update(CityViewModel viewModel, string userId)
         {
             var query = _context.Cities.Where(c => c.Id == viewModel.Id).FirstOrDefault();
             if (query != null)
@@ -65,12 +65,7 @@ namespace SMS.Services
             _context.SaveChanges();
         }
 
-        public string CheckIsExistingCity(int id)
-        {
-            return id > 0 ? "Edit City" : "Create New City";
-        }
-
-        public void Delete(int id)
+        public override void Delete(int id)
         {
             var query = _context.Cities.Find(id);
             if (query != null) query.IsDelete = true;

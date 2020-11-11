@@ -14,14 +14,14 @@ namespace SMS.Web.Controllers
         // GET: City
         public ActionResult Index()
         {
-            var cities = _cityServices.GetCities();
+            var cities = _cityServices.GetAll();
             return View("List", cities);
         }
 
         //GET : City
         public ActionResult Load()
         {
-            var cities = _cityServices.GetCities();
+            var cities = _cityServices.GetAll();
             var jsonSerializerSettings = new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
@@ -34,7 +34,7 @@ namespace SMS.Web.Controllers
         public ActionResult New()
         {
             var cityViewModel = new CityViewModel();
-            ViewBag.Title = _cityServices.CheckIsExistingCity(cityViewModel.Id);
+            ViewBag.Title = _cityServices.GenerateViewBagTitle(cityViewModel.Id);
             return View("CityForm", cityViewModel);
         }
 
@@ -56,7 +56,7 @@ namespace SMS.Web.Controllers
         // GET : City/Edit/{id}
         public ActionResult Edit(int id)
         {
-            var city = _cityServices.GetCityById(id);
+            var city = _cityServices.GetById(id);
             if (city != null)
             {
                 var viewModel = new CityViewModel
@@ -64,7 +64,7 @@ namespace SMS.Web.Controllers
                     Id = city.Id,
                     Name = city.Name
                 };
-                ViewBag.Title = _cityServices.CheckIsExistingCity(id);
+                ViewBag.Title = _cityServices.GenerateViewBagTitle(id);
 
                 return View("CityForm", viewModel);
             }

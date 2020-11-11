@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNet.Identity;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using SMS.Services;
 using SMS.ViewModels;
 using System.Web.Mvc;
@@ -15,21 +13,8 @@ namespace SMS.Web.Controllers
         // GET: Township
         public ActionResult Index()
         {
-            var townships = _townshipServices.GetTownships();
+            var townships = _townshipServices.GetAll();
             return View("List", townships);
-        }
-
-        // GET : Townhship/load
-        public ActionResult Load()
-        {
-            var townships = _townshipServices.GetTownships();
-            var serializerSetting = new JsonSerializerSettings
-            {
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
-            };
-            var jsonData = JsonConvert.SerializeObject(townships, Formatting.Indented, serializerSetting);
-
-            return Content(jsonData, "application/json");
         }
 
         // GET : Township/New
@@ -37,7 +22,7 @@ namespace SMS.Web.Controllers
         {
             var viewModel = new TownshipViewModel
             {
-                Cities = _cityServcies.GetCities()
+                Cities = _cityServcies.GetAll()
             };
 
             return View("TownshipForm", viewModel);
@@ -62,7 +47,7 @@ namespace SMS.Web.Controllers
         // GET : Township/Edit/{id}
         public ActionResult Edit(int id)
         {
-            var township = _townshipServices.GetTownshipById(id);
+            var township = _townshipServices.GetById(id);
             if (township != null)
             {
                 var viewModel = new TownshipViewModel
@@ -71,7 +56,7 @@ namespace SMS.Web.Controllers
                     Name = township.Name,
                     CityId = township.CityId,
                     CityName = township.CityName,
-                    Cities = _cityServcies.GetCities()
+                    Cities = _cityServcies.GetAll()
                 };
                 ViewBag.Title = _townshipServices.GenerateViewBagTitle(id);
 
@@ -97,7 +82,7 @@ namespace SMS.Web.Controllers
         // DELETE : Township/Delete/{id}
         public ActionResult Delete(int id)
         {
-            var township = _townshipServices.GetTownshipById(id);
+            var township = _townshipServices.GetById(id);
             if (township != null)
             {
                 _townshipServices.Delete(id);

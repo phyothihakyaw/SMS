@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace SMS.Services
 {
-    public class TownshipServices
+    public class TownshipServices : CommonServices<TownshipViewModel>
     {
         private readonly SMSDbContext _context = new SMSDbContext();
 
-        public List<TownshipViewModel> GetTownships()
+        public override List<TownshipViewModel> GetAll()
         {
             var townships = _context.Townships      //outer table
                 .Where(t => !t.IsDelete)
@@ -31,7 +31,7 @@ namespace SMS.Services
             return townships;
         }
 
-        public TownshipViewModel GetTownshipById(int id)
+        public override TownshipViewModel GetById(int id)
         {
             var township = _context.Townships.Where(t => t.Id == id)
                 .Join(
@@ -64,7 +64,7 @@ namespace SMS.Services
             return townships;
         }
 
-        public void Create(TownshipViewModel viewModel, string userId)
+        public override void Create(TownshipViewModel viewModel, string userId)
         {
             var newTownship = new Township
             {
@@ -80,7 +80,7 @@ namespace SMS.Services
             _context.SaveChanges();
         }
 
-        public void Update(TownshipViewModel viewModel, string userId)
+        public override void Update(TownshipViewModel viewModel, string userId)
         {
             var township = _context.Townships.Where(t => t.Id == viewModel.Id).SingleOrDefault();
 
@@ -97,12 +97,7 @@ namespace SMS.Services
             }
         }
 
-        public string GenerateViewBagTitle(int id)
-        {
-            return id == 0 ? "Create New Township" : "Edit existing township";
-        }
-
-        public void Delete(int id)
+        public override void Delete(int id)
         {
             var township = _context.Townships.Where(t => t.Id == id).SingleOrDefault();
 

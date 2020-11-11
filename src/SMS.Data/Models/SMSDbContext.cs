@@ -6,6 +6,7 @@ namespace SMS.Data.Models
 {
     public class SMSDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Branch> Branches { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Township> Townships { get; set; }
 
@@ -22,6 +23,7 @@ namespace SMS.Data.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new BranchEntityConfiguration());
             modelBuilder.Configurations.Add(new CityEntityConfiguration());
             modelBuilder.Configurations.Add(new TownshipEntityConfiguration());
 

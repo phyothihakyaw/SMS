@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace SMS.ViewModels
@@ -8,15 +7,15 @@ namespace SMS.ViewModels
     {
         public int Id { get; set; }
 
-        [DisplayName("Township")]
+        [Display(Name = "Township")]
         [Required]
         public string Name { get; set; }
 
-        [DisplayName("City")]
+        [Display(Name = "City")]
         public int CityId { get; set; }
 
-        //for list display
-        [DisplayName("City")]
+        //for list text display
+        [Display(Name = "City")]
         [Required]
         public string CityName { get; set; }
 

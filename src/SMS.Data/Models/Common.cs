@@ -10,5 +10,6 @@ namespace SMS.Data.Models
         public DateTime UpdatedDate { get; set; }
         public bool IsDelete { get; set; }
         public long Version { get; set; }
+        public SMSDbContext Context { get; }
     }
 }
