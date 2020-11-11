@@ -28,10 +28,48 @@ namespace SMS.Web.Controllers
         [HttpPost]
         public ActionResult Create(CityViewModel cityViewModel)
         {
-            var userId = User.Identity.GetUserId();
-            _cityServices.Create(cityViewModel, userId);
+            if (ModelState.IsValid)
+            {
+                var userId = User.Identity.GetUserId();
+                _cityServices.Create(cityViewModel, userId);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+
+            return View("CityForm", cityViewModel);
+        }
+
+        // GET : City/Edit/{id}
+        public ActionResult Edit(int id)
+        {
+            var city = _cityServices.GetCityById(id);
+            if (city != null)
+            {
+                var viewModel = new CityViewModel
+                {
+                    Id = city.Id,
+                    Name = city.Name
+                };
+
+                return View("CityForm", viewModel);
+            }
+
+            return HttpNotFound("Sorry, looks like invalid city id");
+        }
+
+        // POST : City/Edit
+        [HttpPost]
+        public ActionResult Edit(CityViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = User.Identity.GetUserId();
+                _cityServices.Update(viewModel, userId);
+
+                return RedirectToAction("Index");
+            }
+
+            return View("CityForm", viewModel);
         }
 
         protected override void Dispose(bool disposing)

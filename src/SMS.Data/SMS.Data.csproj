@@ -74,6 +74,10 @@
     <Compile Include="Migrations\202011101050021_PopulateUserAndAddToAdminRole.designer.cs">
       <DependentUpon>202011101050021_PopulateUserAndAddToAdminRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011110428413_PopulateStaffUser.cs" />
+    <Compile Include="Migrations\202011110428413_PopulateStaffUser.designer.cs">
+      <DependentUpon>202011110428413_PopulateStaffUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\City.cs" />
@@ -96,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011101050021_PopulateUserAndAddToAdminRole.resx">
       <DependentUpon>202011101050021_PopulateUserAndAddToAdminRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011110428413_PopulateStaffUser.resx">
+      <DependentUpon>202011110428413_PopulateStaffUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

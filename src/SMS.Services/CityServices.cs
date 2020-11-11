@@ -45,17 +45,21 @@ namespace SMS.Services
             };
             city.CreatedUserId = userId;
             city.CreatedDate = DateTime.Now;
+            city.UpdatedUserId = userId;
+            city.UpdatedDate = DateTime.Now;
 
             _context.Cities.Add(city);
             _context.SaveChanges();
         }
 
-        public void Update(City city)
+        public void Update(CityViewModel viewModel, string userId)
         {
-            var query = _context.Cities.Where(c => c.Id == city.Id).FirstOrDefault();
+            var query = _context.Cities.Where(c => c.Id == viewModel.Id).FirstOrDefault();
             if (query != null)
             {
-                query.Name = city.Name;
+                query.Name = viewModel.Name;
+                query.UpdatedUserId = userId;
+                query.UpdatedDate = DateTime.Now;
             }
 
             _context.SaveChanges();

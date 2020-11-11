@@ -25,10 +25,17 @@ namespace SMS.Web
                       "~/lib/admin-lte/js/adminlte.js",
                       "~/lib/font-awesome/js/fontawesome.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootbox").Include(
+                      "~/lib/bootbox.js/bootbox.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
+                      "~/lib/toastr.js/toastr.min.js"));
+
             bundles.Add(new StyleBundle("~/lib/admin-lte/css").Include(
                       "~/Content/bootstrap.css",
                       "~/lib/font-awesome/css/all.css",
-                      "~/lib/admin-lte/css/adminlte.css"));
+                      "~/lib/admin-lte/css/adminlte.css",
+                      "~/lib/toastr.js/toastr.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

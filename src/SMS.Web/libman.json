@@ -9,6 +9,14 @@
     {
       "library": "font-awesome@5.15.1",
       "destination": "lib/font-awesome/"
+    },
+    {
+      "library": "bootbox.js@5.4.1",
+      "destination": "lib/bootbox.js/"
+    },
+    {
+      "library": "toastr.js@2.1.4",
+      "destination": "lib/toastr.js/"
     }
   ]
 }
