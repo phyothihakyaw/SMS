@@ -7,6 +7,7 @@ namespace SMS.Data.Models
     public class SMSDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<City> Cities { get; set; }
+        public DbSet<Township> Townships { get; set; }
 
         public SMSDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -22,6 +23,7 @@ namespace SMS.Data.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new CityEntityConfiguration());
+            modelBuilder.Configurations.Add(new TownshipEntityConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

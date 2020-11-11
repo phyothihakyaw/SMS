@@ -7,14 +7,14 @@ namespace SMS.Data.Entity_Configuration
     {
         public CityEntityConfiguration()
         {
-            this.Property(p => p.Name)
+            this.Property(c => c.Name)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            this.Property(p => p.CreatedUserId)
+            this.Property(c => c.CreatedUserId)
                 .IsRequired();
 
-            this.Property(p => p.UpdatedUserId)
+            this.Property(c => c.UpdatedUserId)
                 .IsRequired();
         }
     }

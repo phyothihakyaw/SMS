@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity Configuration\CityEntityConfiguration.cs" />
+    <Compile Include="Entity Configuration\TownshipEntityConfiguration.cs" />
     <Compile Include="Migrations\202011090435328_InitialCommit.cs" />
     <Compile Include="Migrations\202011090435328_InitialCommit.designer.cs">
       <DependentUpon>202011090435328_InitialCommit.cs</DependentUpon>
@@ -78,11 +79,16 @@
     <Compile Include="Migrations\202011110428413_PopulateStaffUser.designer.cs">
       <DependentUpon>202011110428413_PopulateStaffUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011110439181_AddTownshipsTableToDatabase.cs" />
+    <Compile Include="Migrations\202011110439181_AddTownshipsTableToDatabase.designer.cs">
+      <DependentUpon>202011110439181_AddTownshipsTableToDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\SMSDbContext.cs" />
+    <Compile Include="Models\Township.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011110428413_PopulateStaffUser.resx">
       <DependentUpon>202011110428413_PopulateStaffUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011110439181_AddTownshipsTableToDatabase.resx">
+      <DependentUpon>202011110439181_AddTownshipsTableToDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
